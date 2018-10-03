@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.marcobrenes.wickedcool"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    // Specifies one flavor dimension
+    flavorDimensions "version"
+    productFlavors {
+        // Free version
+        free {
+            // Assigns this product flavor to the "version" flavor dimension
+            dimension "version"
+            applicationId = "com.marcobrenes.wickedcool"
+        }
+        // Pro version
+        pro {
+            dimension "version"
+            applicationId = "com.marcobrenes.wickedcool.pro"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
+    implementation 'com.google.android.material:material:1.0.0-alpha1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+}
