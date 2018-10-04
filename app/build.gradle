@@ -20,7 +20,7 @@ android {
             debuggable true
         }
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -32,11 +32,17 @@ android {
             // Assigns this product flavor to the "version" flavor dimension
             dimension "version"
             applicationId = "com.marcobrenes.wickedcool"
+            manifestPlaceholders = [
+                    appName: "WickedCool"
+            ]
         }
         // Pro version
         pro {
             dimension "version"
             applicationId = "com.marcobrenes.wickedcool.pro"
+            manifestPlaceholders = [
+                    appName: "WickedCool Pro"
+            ]
         }
     }
 
@@ -51,8 +57,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
-    implementation 'com.google.android.material:material:1.0.0-alpha1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
